@@ -32,7 +32,7 @@ streamlit.header('Fruityvice Fruit Advice!')
 fruit_choice = streamlit.text_input(
     'What fruit would you like information about', 'Kiwi'
 )
-streamlit.write('The user entered', fruit_choice)
+streamlit.write(f'The user entered {fruit_choice}')
 
 fruityvice_response = requests.get(
     f'https://fruityvice.com/api/fruit/watermelon'
@@ -47,3 +47,8 @@ my_cur.execute('select * from fruit_load_list')
 my_data_rows = my_cur.fetchall()
 streamlit.header('The fruit load list contains:')
 streamlit.dataframe(my_data_rows)
+
+# Allow the end user to add a fruit to the list
+add_my_fruit = streamlit.text_input('What fruit would you like to add?',
+                                    'jackfruit')
+streamlit.write(f'Thanks for adding {add_my_fruit}')
